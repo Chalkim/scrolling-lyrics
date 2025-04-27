@@ -17,7 +17,7 @@ export const RemotionRoot: React.FC = () => {
           lyricsColor: "#ffffff",
           backgroundColor: "rgba(0, 0, 0, 0.20)",
           animationStrategy: "spring" as const,
-          springConfig: { damping: 100, mass: 1, stiffness: 10 },
+          springConfig: { mass: 1, damping: 100, stiffness: 10 },
           durationInFrames: 45,
           backgroundTimeFactor: 0.1,
           lyrics: [

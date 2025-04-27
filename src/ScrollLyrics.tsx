@@ -30,12 +30,12 @@ export const scrollLyricsSchema = z.object({
   springConfig: z
     .object({
       // 0 -100
+      mass: z.number().min(0.3).max(10),
       damping: z.number().min(1).max(200),
-      mass: z.number(),
-      stiffness: z.number(),
+      stiffness: z.number().min(1).max(200),
     }),
   // 动画时长
-  durationInFrames: z.number(),
+  durationInFrames: z.number().min(1).int(),
   // 时间因子
   backgroundTimeFactor: z.number(),
   // 歌词数据
