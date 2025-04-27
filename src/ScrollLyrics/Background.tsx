@@ -77,7 +77,7 @@ const Background: React.FC<BackgroundProps> = (props: BackgroundProps) => {
   }, [frame, fps, scene, camera, renderer, material, timeFactor]);
 
   return (
-    <div ref={containerRef} className="shader-container">
+    <div ref={containerRef} style={{background: 'black'}}>
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}>
         {children}
       </div>

@@ -6,6 +6,9 @@
 import { Config } from "@remotion/cli/config";
 import { enableTailwind } from '@remotion/tailwind-v4';
 
+Config.setConcurrency(16);
+Config.setHardwareAcceleration('if-possible');
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
 Config.overrideWebpackConfig(enableTailwind);
+Config.setChromiumOpenGlRenderer('angle');

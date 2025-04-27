@@ -21,13 +21,16 @@ const lyricSchema = z.object({
 export const scrollLyricsSchema = z.object({
   // 歌词颜色
   lyricsColor: zColor(),
+  // 背景颜色
+  backgroundColor: zColor(),
   // 动画策略
   animationStrategy: z
     .enum(["spring", "interpolate"]),
   // spring 动画配置
   springConfig: z
     .object({
-      damping: z.number(),
+      // 0 -100
+      damping: z.number().min(1).max(200),
       mass: z.number(),
       stiffness: z.number(),
     }),
@@ -41,6 +44,7 @@ export const scrollLyricsSchema = z.object({
 
 export const ScrollLyrics: React.FC<z.infer<typeof scrollLyricsSchema>> = ({
   lyricsColor,
+  backgroundColor,
   animationStrategy,
   springConfig,
   durationInFrames,
@@ -109,11 +113,7 @@ export const ScrollLyrics: React.FC<z.infer<typeof scrollLyricsSchema>> = ({
         );
 
   return (
-    <AbsoluteFill
-      style={{
-        background: "black",
-      }}
-    >
+    <AbsoluteFill>
       <Background timeFactor={backgroundTimeFactor}>
         <div
           ref={containerRef}
@@ -121,7 +121,7 @@ export const ScrollLyrics: React.FC<z.infer<typeof scrollLyricsSchema>> = ({
             height: `${height}px`,
             overflow: "hidden",
             position: "relative",
-            backgroundColor: "rgba(0, 0, 0, 0.5)", // 半透明的暗色背景
+            backgroundColor: backgroundColor,
           }}
         >
           <div
